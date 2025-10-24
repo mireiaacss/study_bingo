@@ -23,6 +23,7 @@ Updating Trivia Content
   3. Run unit tests: `pytest`
 
 Development Notes
-- Core files live in `src/bingo`.
+- Core files live in `bingo/`.
 - Tests live in `tests/`.
-- Configurable settings are in `src/bingo/config/settings.yaml`.
+- Configurable settings are in `bingo/config/settings.yaml`.
+
