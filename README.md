@@ -1,4 +1,3 @@
-```markdown
 # Study Bingo
 
 Trivia Bingo game where bingo cards contain trivia questions and answers (terminal commands and Python basics).
@@ -34,4 +33,4 @@ Project structure
 Contributing
 
 See docs/index.md for rules and guidance on updating trivia content.
-```
+
