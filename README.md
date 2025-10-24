@@ -20,7 +20,7 @@ Usage
 Run the game:
 
 ```bash
-python -m src.game
+python -m src.game..py
 ```
 
 Project structure
