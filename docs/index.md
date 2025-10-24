@@ -1,19 +1,15 @@
-# Study Bingo — Documentation
+# Study Bingo
 
 Overview
-- Study Bingo is a trivia-based bingo game. Each cell contains a question (and its answer).
-- Players mark cells only when they correctly answer the question drawn by the system.
+- Study Bingo is a trivia-based bingo game. Each cell contains an answer.
+- Players mark the cell that corresponds to the answer of the given question.
 
-Game Rules (prototype)
-- A card is a square grid (default 5x5).
-- The center may be a free cell.
+Game Rules
+- A card is a rectangular grid (default 3x9).
 - The system draws questions one at a time.
-- If the drawn question appears on your card, answer it. If your answer matches the stored answer exactly (case-insensitive), that cell is marked.
-- A player can declare "BINGO" to claim a win. The system verifies if a winning pattern is present.
-- Winning patterns supported by default:
-  - Any complete row
-  - Any complete column
-  - Either main diagonal
+- If the answer to the question appears on your card, type the cell position. If the answer to the question is not on your card, type n.
+.
+- A player can declare "BINGO" to claim a win. The system verifies if all the cells are marked are correct.
 
 Updating Trivia Content
 - Questions live in `data/q&a.csv` with headers: id,question,answer.
@@ -23,7 +19,8 @@ Updating Trivia Content
   3. Run unit tests: `pytest`
 
 Development Notes
-- Core files live in `bingo/`.
+- Core files live in `src/`.
 - Tests live in `tests/`.
-- Configurable settings are in `bingo/config/settings.yaml`.
+- Configurable settings are in `src/config/settings.yaml`.
+
 
