@@ -1,6 +1,6 @@
 # Study Bingo
 
-Trivia Bingo game where bingo cards contain trivia questions and answers (terminal commands and Python basics).
+Trivia Bingo game where bingo cards contain trivia questions and answers (terminal commands, Python basics and bash).
 
 Installation
 
@@ -17,15 +17,15 @@ Installation
 
 Usage
 
-Run the game (simple CLI prototype):
+Run the game:
 
 ```bash
-python -m src.bingo.game
+python -m src.game
 ```
 
 Project structure
 
-- src/bingo/: main game package
+- src/: main game package
 - data/q&a.csv: question bank
 - tests/: unit tests
 - docs/: documentation
