@@ -24,7 +24,7 @@ python -m src.game..py
 ```
 
 Project structure
-
+```
 study_bingo/
 ├── README.md → Project overview, installation, and instructions for players/developers.
 ├── requirements.txt → List of Python dependencies to run the project.
@@ -46,7 +46,7 @@ study_bingo/
 └── docs/
    └── index.md → Project documentation (rules, architecture, design notes, or
       usage guide)
-
+```
 Contributing
 
 See docs/index.md for rules and guidance on updating trivia content.
