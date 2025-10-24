@@ -25,29 +25,26 @@ python -m src.game..py
 
 Project structure
 
-Project root
-- README.md → Project overview, installation, and instructions for
-players/developers.
-- requirements.txt → List of Python dependencies to run the project.
-- LICENSE → License for distribution and usage rights.
-   src/ (main game logic)
-      - config/settings.yaml → Configuration file (board size, rules, win conditions,
-      CSV path).
-      - __init__.py → Marks the folder as a Python package.
-      - board.py → Functions to generate and manage bingo cards.
-      - questions.py → Loads and retrieves trivia questions from the CSV.
-      - player.py → Handles player input and interactions.
-      - checker.py → Validates answers and checks for BINGO.
-      - game.py → Main game loop, ties together board, player, and checker.
-   tests/ (unit tests)
-      - test_board.py → Tests for card generation logic.
-      - test_questions.py → Tests for loading and serving trivia questions.
-      - test_checker.py → Tests for validation and BINGO detection.
-      - test_game.py → Tests for overall game flow.
-   data/
-      - q&a.csv → Trivia question and answer bank used during the game.
-   docs/
-      - index.md → Project documentation (rules, architecture, design notes, or
+study_bingo/
+├── README.md → Project overview, installation, and instructions for players/developers.
+├── requirements.txt → List of Python dependencies to run the project.
+├── LICENSE → License for distribution and usage rights.
+└── src/
+   ├── __init__.py → Marks the folder as a Python package.
+   ├── board.py → Functions to generate and manage bingo cards.
+   ├── questions.py → Loads and retrieves trivia questions from the CSV.
+   ├── player.py → Handles player input and interactions.
+   ├── checker.py → Validates answers and checks for BINGO.
+   └── game.py → Main game loop, ties together board, player, and checker.
+└── tests/
+   ├── test_board.py → Tests for card generation logic.
+   ├── test_questions.py → Tests for loading and serving trivia questions.
+   ├── test_checker.py → Tests for validation and BINGO detection.
+   └── test_game.py → Tests for overall game flow.
+└── data/
+   └── q&a.csv → Trivia question and answer bank used during the game.
+└── docs/
+   └── index.md → Project documentation (rules, architecture, design notes, or
       usage guide)
 
 Contributing
