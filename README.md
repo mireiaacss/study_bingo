@@ -51,3 +51,13 @@ Contributing
 
 See docs/index.md for rules and guidance on updating trivia content.
 
+# Study Bingo - Sprint 1
+
+## Sprint Goal
+Establish the foundation of the Bingo game by setting up the project structure,
+creating an initial number dataset, and implementing basic bingo card generation.
+
+## Run locally
+pip install -r requirements.txt
+python -m src.board
+
