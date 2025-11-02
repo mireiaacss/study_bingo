@@ -1,28 +1,40 @@
 # src/board.py 
-import random 
+import random
+import questions
 
- 
-def create_number_dataset(start=1, end=99):
-    """Return a list of numbers available for the bingo."""
-    return list(range(start, end + 1))
-
-def generate_bingo_card():
-    """Generate a 3x9 bingo card with random numbers."""
-    numbers = create_number_dataset()
-    chosen = random.sample(numbers, 27)  # Select 27 unique random numbers
-    card = [chosen[i*9:(i+1)*9] for i in range(3)]  # Split into 3 rows of 9
+def generate_bingo_card(csv_path):
+    """Generate a 3x9 bingo card filled with random answers from the CSV."""
+    answers = questions.take_dataset(csv_path)
+    chosen = random.sample(answers, 27)  # 3 x 9 = 27 answers
+    card = [chosen[i*9:(i+1)*9] for i in range(3)]
     return card
 
-def print_bingo_card(card):
-    column_labels = ['A','B','C','D','E','F','G','H','I']
-    print("   " + "  ".join(column_labels))
-    print("  " + "---" * len(column_labels))
 
+def print_bingo_card(card):
+    """Print the board with coordinates (A–I, 1–3)."""
+    column_labels = ['A','B','C','D','E','F','G','H','I']
+    print("\n   " + "  ".join(column_labels))
+    print("  " + "---" * len(column_labels))
     for i, row in enumerate(card, start=1):
-        formatted_row = "  ".join(f"{num:2d}" for num in row)
+        formatted_row = " | ".join(f"{cell[:10]}" for cell in row)  # short version
         print(f"{i} | {formatted_row}")
 
 
+def mark_cell(card, row, col):
+    """Replace a cell with 'X' if correct."""
+    card[row][col] = "X"
+
+
+def is_complete(card):
+    """Return True if the board is completely marked."""
+    for row in card:
+        for cell in row:
+            if cell != "X":
+                return False
+    return True
+
+
 if __name__ == "__main__":
-    card = generate_bingo_card()
+    path = "data/q&a.csv"
+    card = generate_bingo_card(path)
     print_bingo_card(card)
