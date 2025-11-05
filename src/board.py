@@ -12,9 +12,9 @@ def generate_bingo_card(csv_path):
 
 def print_bingo_card(card):
     """Print the board with coordinates (A–I, 1–3)."""
-    column_labels = ['A','B','C','D','E','F','G','H','I']
+    column_labels = [' A  ',' B ',' C ',' D ',' E ',' F ',' G ',' H ',' I ']
     print("\n   " + "  ".join(column_labels))
-    print("  " + "---" * len(column_labels))
+    print("  " + "-----" * len(column_labels))
     for i, row in enumerate(card, start=1):
         formatted_row = " | ".join(f"{cell[:10]}" for cell in row)  # short version
         print(f"{i} | {formatted_row}")
@@ -35,6 +35,6 @@ def is_complete(card):
 
 
 if __name__ == "__main__":
-    path = "data/q&a.csv"
+    path = "/data/q&a.csv"
     card = generate_bingo_card(path)
     print_bingo_card(card)

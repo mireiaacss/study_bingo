@@ -1,100 +1,82 @@
-key,value
-A1,1
-A2,2
-A3,3
-A4,4
-A5,5
-A6,6
-A7,7
-A8,8
-A9,9
-A10,10
-A11,11
-A12,12
-A13,13
-A14,14
-A15,15
-A16,16
-A17,17
-A18,18
-A19,19
-A20,20
-A21,21
-A22,22
-A23,23
-A24,24
-A25,25
-A26,26
-A27,27
-A28,28
-A29,29
-A30,30
-A31,31
-A32,32
-A33,33
-A34,34
-A35,35
-A36,36
-A37,37
-A38,38
-A39,39
-A40,40
-A41,41
-A42,42
-A43,43
-A44,44
-A45,45
-A46,46
-A47,47
-A48,48
-A49,49
-A50,50
-A51,51
-A52,52
-A53,53
-A54,54
-A55,55
-A56,56
-A57,57
-A58,58
-A59,59
-A60,60
-A61,61
-A62,62
-A63,63
-A64,64
-A65,65
-A66,66
-A67,67
-A68,68
-A69,69
-A70,70
-A71,71
-A72,72
-A73,73
-A74,74
-A75,75
-A76,76
-A77,77
-A78,78
-A79,79
-A80,80
-A81,81
-A82,82
-A83,83
-A84,84
-A85,85
-A86,86
-A87,87
-A88,88
-A89,89
-A90,90
-A91,91
-A92,92
-A93,93
-A94,94
-A95,95
-A96,96
-A97,97
-A98,98
-A99,99
+key;value
+How do you go to your home directory?;cd ~
+How do you go up one directory level?;cd ..
+How do you return to the previous directory?;cd -
+How do you go to the root directory?;cd /
+How do you remove a file?;rm
+How do you remove a directory and its contents?;rm -r
+How do you copy a file?;cp
+How do you list directory contents?;ls
+How do you move or rename a file/directory?;mv
+How do you list with detailed information?;ls -l
+How do you list with hidden files?;ls -a
+How do you search for text in files?;grep
+How do you find lines NOT containing a pattern?;grep -v
+How do you find files by name in directory tree? ;find
+How do you overwrite output to a file?;>
+How do you append output to a file? ;>>
+How do you pipe output to another command? ;|
+How do you show the first lines of a file?;head -n
+How do you show the last lines of a file? ;tail -n
+How do you display entire file content? ;cat
+How do you change file permissions to write?;chmod +w
+How do you change file permissions to read?;chmod +r
+How do you change file permissions to execute?;chmod +x
+How do you show running processes? ;ps
+How do you create a new directory? ;mkdir
+How do you create an empty file?;touch
+How do you show current working directory? ;pwd
+How do you display command manual? ;man
+How do you change the file permission so that only the owner can read and write it;chmod u+rw,go-rw
+How do you remove execute permission for others?;chmod  o -x
+How do you go up two directory levels?;cd ../..
+How do you list only directories;Ls -d*/
+How do you count lines, words, characters?;wc
+How do you find only files?;find -type f
+How you you search recursively in directories?;grep -r
+How do you sort and remove duplicates?;sort | uniq
+How do you extract first column from CSV?;cut -d, -f1
+How do you initialize a new Git repository? ;git init
+How do you check your Git version?;git --version
+How do you clone a remote repository?;git clone
+How do you add a specific file to staging? ;git add file
+How do you add all changes to staging?;git add .
+How do you commit with a message? ;"git commit -m ""message"""
+How do you see what will be committed? ;git status
+How do you commit all tracked files?;" git commit -a -m ""message"""
+How do you see commit history? ;git log
+How do you see compact commit history?;git log --oneline
+How do you see changes in a commit? ;git show commit-id
+How do you see only your commits? ;"git log --author=""name"""
+How do you see last N commits?;git log -n
+How do you list all branches?;git branch
+How do you switch to a branch? ;git checkout branch
+How do you merge a branch?;git merge branch
+How do you push to remote? ;git push origin main
+How do you pull from remote?;git pull origin main
+How do you see remote branches? ;git branch -r
+How do you get changes without merging? ;git fetch
+How do you run a container from an image?;docker run
+How do you run a container in background? ;docker run -d
+How do you name a container? ;"docker run --name mycontainer
+"
+How do you list running containers?;docker ps
+How do you  list ALL containers?;docker ps -a
+How do you stop a container?;docker stop
+How do you remove a container?;docker rm
+How do you list images?;docker images
+How do you pull image from registry?;docker pull image
+How do you push image to registry?;docker push image
+How do you see image history? ;docker history
+How do you see Docker info?;docker info
+How do you see Docker version?;docker version
+How do you show your current username?;whoami
+How do you show user ID and group IDs?;id
+How do you show all system information?;uname -a
+How do you show kernel version?;uname -r
+How do you show current date and time? ;date
+How do you show file type?;file filename
+How do you show all running processes?;ps aux
+How do you show all environment variables?;env
+How do you print a word?;echo
+How do you print all files in current directory? ;echo *
