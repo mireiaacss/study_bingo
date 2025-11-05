@@ -5,6 +5,10 @@ import questions
 def generate_bingo_card(csv_path):
     """Generate a 3x9 bingo card filled with random answers from the CSV."""
     answers = questions.take_dataset(csv_path)
+    print(f"Answers: {answers}")  # Debugging
+    print(f"Number of answers: {len(answers)}")  # Debugging
+    if len(answers) < 27:
+        raise ValueError("Not enough answers in the dataset to generate a bingo card.")
     chosen = random.sample(answers, 27)  # 3 x 9 = 27 answers
     card = [chosen[i*9:(i+1)*9] for i in range(3)]
     return card
@@ -34,7 +38,8 @@ def is_complete(card):
     return True
 
 
+
 if __name__ == "__main__":
-    path = "/data/q&a.csv"
+    path = "data/q&a.csv"
     card = generate_bingo_card(path)
     print_bingo_card(card)

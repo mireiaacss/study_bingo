@@ -12,21 +12,21 @@ How do you list with detailed information?;ls -l
 How do you list with hidden files?;ls -a
 How do you search for text in files?;grep
 How do you find lines NOT containing a pattern?;grep -v
-How do you find files by name in directory tree? ;find
+How do you find files by name in directory tree?;find
 How do you overwrite output to a file?;>
-How do you append output to a file? ;>>
-How do you pipe output to another command? ;|
+How do you append output to a file?;>>
+How do you pipe output to another command?;|
 How do you show the first lines of a file?;head -n
-How do you show the last lines of a file? ;tail -n
-How do you display entire file content? ;cat
+How do you show the last lines of a file?;tail -n
+How do you display entire file content?;cat
 How do you change file permissions to write?;chmod +w
 How do you change file permissions to read?;chmod +r
 How do you change file permissions to execute?;chmod +x
-How do you show running processes? ;ps
-How do you create a new directory? ;mkdir
+How do you show running processes?;ps
+How do you create a new directory?;mkdir
 How do you create an empty file?;touch
-How do you show current working directory? ;pwd
-How do you display command manual? ;man
+How do you show current working directory?;pwd
+How do you display command manual?;man
 How do you change the file permission so that only the owner can read and write it;chmod u+rw,go-rw
 How do you remove execute permission for others?;chmod  o -x
 How do you go up two directory levels?;cd ../..
@@ -36,30 +36,29 @@ How do you find only files?;find -type f
 How you you search recursively in directories?;grep -r
 How do you sort and remove duplicates?;sort | uniq
 How do you extract first column from CSV?;cut -d, -f1
-How do you initialize a new Git repository? ;git init
+How do you initialize a new Git repository?;git init
 How do you check your Git version?;git --version
 How do you clone a remote repository?;git clone
-How do you add a specific file to staging? ;git add file
+How do you add a specific file to staging?;git add file
 How do you add all changes to staging?;git add .
-How do you commit with a message? ;"git commit -m ""message"""
-How do you see what will be committed? ;git status
-How do you commit all tracked files?;" git commit -a -m ""message"""
-How do you see commit history? ;git log
+How do you commit with a message?;git commit -m message
+How do you see what will be committed?;git status
+How do you commit all tracked files?;git commit -a -m message
+How do you see commit history?;git log
 How do you see compact commit history?;git log --oneline
-How do you see changes in a commit? ;git show commit-id
-How do you see only your commits? ;"git log --author=""name"""
+How do you see changes in a commit?;git show commit-id
+How do you see only your commits?;"git log --author=""name"""
 How do you see last N commits?;git log -n
 How do you list all branches?;git branch
-How do you switch to a branch? ;git checkout branch
+How do you switch to a branch?;git checkout branch
 How do you merge a branch?;git merge branch
-How do you push to remote? ;git push origin main
+How do you push to remote?;git push origin main
 How do you pull from remote?;git pull origin main
-How do you see remote branches? ;git branch -r
-How do you get changes without merging? ;git fetch
+How do you see remote branches?;git branch -r
+How do you get changes without merging?;git fetch
 How do you run a container from an image?;docker run
-How do you run a container in background? ;docker run -d
-How do you name a container? ;"docker run --name mycontainer
-"
+How do you run a container in background?;docker run -d
+How do you name a container?;docker run --name mycontainer
 How do you list running containers?;docker ps
 How do you  list ALL containers?;docker ps -a
 How do you stop a container?;docker stop
@@ -74,7 +73,7 @@ How do you show your current username?;whoami
 How do you show user ID and group IDs?;id
 How do you show all system information?;uname -a
 How do you show kernel version?;uname -r
-How do you show current date and time? ;date
+How do you show current date and time?;date
 How do you show file type?;file filename
 How do you show all running processes?;ps aux
 How do you show all environment variables?;env
