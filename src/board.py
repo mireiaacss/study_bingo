@@ -13,11 +13,18 @@ def generate_bingo_card(csv_path):
 def print_bingo_card(card):
     """Print the board with coordinates (A - I, 1 - 3)."""
     column_labels = [' A  ',' B ',' C ',' D ',' E ',' F ',' G ',' H ',' I ']
-    print("\n   " + "  ".join(column_labels))
-    print("  " + "-----" * len(column_labels))
+    cell_width = 15
+    print("\n    " + "".join(label.center(cell_width + 3) for label in column_labels))
+    print("   " + ("-" * (cell_width + 3) * len(column_labels)))
+    #print("\n   " + "  ".join(column_labels))
+    #print("  " + "-----" * len(column_labels))
+    #for i, row in enumerate(card, start=1):
+        #formatted_row = " | ".join(cell[:10].center(10) for cell in row)
+        #print(f"{i} | {formatted_row}")
     for i, row in enumerate(card, start=1):
-        formatted_row = " | ".join(cell[:10].center(10) for cell in row)
+        formatted_row = " | ".join(cell[:cell_width].center(cell_width) for cell in row)
         print(f"{i} | {formatted_row}")
+        print("   " + ("-" * (cell_width + 3) * len(column_labels)))
 
 
 def mark_cell(card, row, col):
