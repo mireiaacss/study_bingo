@@ -7,10 +7,8 @@ def take_dataset(csv_path):
         reader = csv.reader(file, delimiter=';')
         next(reader)  # skip header if there is one
         for row in reader:
-            print(f"Row: {row}")  # Debugging   
             if len(row) >= 2:
                 answers.append(row[1].strip())
-    print(f"Final answers: {answers}")  # Debugging
     return answers
 
 

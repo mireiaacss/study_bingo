@@ -28,7 +28,7 @@ How do you create an empty file?;touch
 How do you show current working directory?;pwd
 How do you display command manual?;man
 How do you change the file permission so that only the owner can read and write it;chmod u+rw,go-rw
-How do you remove execute permission for others?;chmod  o -x
+How do you remove execute permission for others?;chmod o-x
 How do you go up two directory levels?;cd ../..
 How do you list only directories;Ls -d*/
 How do you count lines, words, characters?;wc
@@ -47,7 +47,6 @@ How do you commit all tracked files?;git commit -a -m message
 How do you see commit history?;git log
 How do you see compact commit history?;git log --oneline
 How do you see changes in a commit?;git show commit-id
-How do you see only your commits?;"git log --author=""name"""
 How do you see last N commits?;git log -n
 How do you list all branches?;git branch
 How do you switch to a branch?;git checkout branch
@@ -66,7 +65,7 @@ How do you remove a container?;docker rm
 How do you list images?;docker images
 How do you pull image from registry?;docker pull image
 How do you push image to registry?;docker push image
-How do you see image history? ;docker history
+How do you see image history?;docker history
 How do you see Docker info?;docker info
 How do you see Docker version?;docker version
 How do you show your current username?;whoami
