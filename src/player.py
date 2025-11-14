@@ -31,7 +31,7 @@ def coord_to_indices(coord: str) -> Optional[Tuple[int, int]]:
 
 
 def ask_for_coord_or_skip(
-    prompt: str = "Enter coordinate (e.g. B2), ENTER to skip, or 'q' to quit: "
+    prompt: str = "Enter coordinate (e.g. B2), ENTER to skip if the answer is not in your board, or 'q' to quit: "
 ) -> Optional[str]:
     """
     Ask the player for input:
