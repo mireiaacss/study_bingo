@@ -40,11 +40,11 @@ def find_answer_position(card: List[List[str]], target: str) -> Optional[Tuple[i
 def print_error_log(errors: List[Tuple[str, str, str]]) -> None:
     """
     Print errors in the requested format:
-    PREGUNTA - VERDADERA RESPUESTA - RESPUESTA ERRÓNEA
+    QUESTION - TRUE ANSWER - WRONG ANSWER
     """
     if not errors:
         return
-    print("\nErrores cometidos:")
+    print("\nERRORS MADE:")
     for q, true_a, wrong_a in errors:
         print(f"{q} - {true_a} - {wrong_a}")
 
@@ -71,7 +71,7 @@ def main() -> None:
 
         print_bingo_card(card)
         print("\nQuestion:")
-        print(f"→ {question}")
+        print(f"\n----→ {question}")
 
         # Check if the correct answer is on the board (for skip penalty logic)
         pos = find_answer_position(card, correct_answer)
@@ -90,12 +90,12 @@ def main() -> None:
                 errors.append((question, correct_answer, "(empty)"))
                 print(f"❌ You skipped a question whose answer was on your board. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
                 if mistakes >= MAX_MISTAKES:
-                    print("💥 You reached the maximum number of mistakes. You lose.")
+                    print("💥 You reached the maximum number of mistakes. You loose.")
                     print_bingo_card(card)
                     print_error_log(errors)
                     return
             else:
-                print("⏭️  Skipped. Next question.\n")
+                print("\n⏭️  Skipped. Next question.\n")
             continue
 
         # User entered a coordinate: validate and resolve
