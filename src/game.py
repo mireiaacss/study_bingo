@@ -46,7 +46,8 @@ def print_error_log(errors: List[Tuple[str, str, str]]) -> None:
         return
     print("\nERRORS MADE:")
     for q, true_a, wrong_a in errors:
-        print(f"{q} - {true_a} - {wrong_a}")
+
+        print(f"{q} - \033[1mThe real answer is:\033[0m {true_a} ✅ - \033[1mbut you answered:\033[0m {wrong_a} ❌")
 
 
 def main() -> None:
@@ -88,7 +89,7 @@ def main() -> None:
             if pos is not None:
                 mistakes += 1
                 errors.append((question, correct_answer, "(empty)"))
-                print(f"❌ You skipped a question whose answer was on your board. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
+                #print(f"❌ You skipped a question whose answer was on your board. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
                 if mistakes >= MAX_MISTAKES:
                     print("💥 You reached the maximum number of mistakes. You loose.")
                     print_bingo_card(card)
@@ -119,7 +120,7 @@ def main() -> None:
         else:
             mistakes += 1
             errors.append((question, correct_answer, chosen_cell))
-            print(f"❌ Wrong cell. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
+            #print(f"❌ Wrong cell. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
             if mistakes >= MAX_MISTAKES:
                 print("💥 You reached the maximum number of mistakes. You lose.")
                 print_bingo_card(card)
