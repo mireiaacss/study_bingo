@@ -44,10 +44,14 @@ def print_error_log(errors: List[Tuple[str, str, str]]) -> None:
     """
     if not errors:
         return
-    print("\nERRORS MADE:")
+    print("\n" + "="*30)
+    print("❌ MISTAKES SUMMARY ❌")
+    print("="*30)
     for q, true_a, wrong_a in errors:
-
-        print(f"{q} - \033[1mThe real answer is:\033[0m {true_a} ✅ - \033[1mbut you answered:\033[0m {wrong_a} ❌")
+        print(f"❓ Q: {q}")
+        print(f"   ✅ Real answer: {true_a}")
+        print(f"   ❌ Your answer: {wrong_a}")
+        print("-" * 20)
 
 
 def main() -> None:
@@ -55,12 +59,13 @@ def main() -> None:
     card = generate_bingo_card(CSV_PATH)
 
     mistakes = 0
-    errors: List[Tuple[str, str, str]] = []  # (question, true_answer, wrong_answer_text)
+    errors: List[Tuple[str, str, str]] = []   # (question, true_answer, wrong_answer_text)
+    correct_log: List[Tuple[str, str]] = []   # (question, correct_answer) - New list for correct ones
 
     print("=== STUDY BINGO ===")
     print("Type a coordinate (e.g. B2).")
     print("If you think the answer is NOT on your board, press ENTER to skip.")
-    print(f"You lose after {MAX_MISTAKES} mistakes. Type 'q' to quit.\n")
+    print(f"You loose after {MAX_MISTAKES} mistakes. Type 'q' to quit.\n")
 
     for question, correct_answer in qa_pairs:
         # Win check at start of round
@@ -89,9 +94,8 @@ def main() -> None:
             if pos is not None:
                 mistakes += 1
                 errors.append((question, correct_answer, "(empty)"))
-                #print(f"❌ You skipped a question whose answer was on your board. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
                 if mistakes >= MAX_MISTAKES:
-                    print("💥 You reached the maximum number of mistakes. You loose.")
+                    print(f"\n💥 GAME OVER! You reached {MAX_MISTAKES} mistakes.")
                     print_bingo_card(card)
                     print_error_log(errors)
                     return
@@ -109,9 +113,9 @@ def main() -> None:
         r, c = idx
         chosen_cell = card[r][c]
 
+        mark_cell(card, r, c)
+
         if chosen_cell == correct_answer:
-            mark_cell(card, r, c)
-            print("✅ Correct! Marked with 'X'.\n")
             if is_complete(card):
                 print("\n🎉 BINGO! You completed the board!")
                 print_bingo_card(card)
@@ -120,9 +124,9 @@ def main() -> None:
         else:
             mistakes += 1
             errors.append((question, correct_answer, chosen_cell))
-            #print(f"❌ Wrong cell. Mistakes: {mistakes}/{MAX_MISTAKES}\n")
             if mistakes >= MAX_MISTAKES:
-                print("💥 You reached the maximum number of mistakes. You lose.")
+                print("💥 You reached the maximum number of mistakes. You loose.")
+                print("Here is the list of what went wrong:")
                 print_bingo_card(card)
                 print_error_log(errors)
                 return
@@ -130,8 +134,6 @@ def main() -> None:
     # Deck exhausted
     print("\nNo more questions. Game over.")
     print_bingo_card(card)
-    if is_complete(card):
-        print("🎉 BINGO! (completed exactly at the end)")
     print_error_log(errors)
 
 
