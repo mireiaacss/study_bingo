@@ -100,9 +100,9 @@ def play_round() -> bool:
             if pos is not None:
                 mistakes += 1
                 errors.append((question, correct_answer, "(empty)"))
+                print("\n⏭️  Skipped. Next question.\n")
                 if mistakes >= MAX_MISTAKES:
                     print(f"\n💥 GAME OVER! You reached {MAX_MISTAKES} mistakes.")
-                    print_bingo_card(card)
                     print_error_log(errors)
                     return
             else:
@@ -131,7 +131,7 @@ def play_round() -> bool:
             mistakes += 1
             errors.append((question, correct_answer, chosen_cell))
             if mistakes >= MAX_MISTAKES:
-                print("💥 You reached the maximum number of mistakes. You loose.")
+                print("💥 You reached the maximum number of mistakes. You lose.")
                 print("Here is the list of what went wrong:")
                 print_error_log(errors)
                 return
@@ -154,7 +154,7 @@ def main() -> None:
         
         # Otherwise (Win or Lose), we ask to play again.
         print("\n" + "-"*40)
-        again = input("🔄 Do you want to play again? (y/n): ").strip().lower()
+        again = input("🔄 Do you want to play again? (yes/no): ").strip().lower()
         if again != 'y':
             print("Thanks for playing! See you next time.")
             break
