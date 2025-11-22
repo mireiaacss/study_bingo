@@ -54,14 +54,20 @@ def print_error_log(errors: List[Tuple[str, str, str]]) -> None:
         print("-" * 20)
 
 
-def main() -> None:
+def play_round() -> bool:
+    """
+    Runs a single game of Bingo.
+    Returns True if the game ended naturally (win/loss/empty deck).
+    Returns False if the user chose to quit immediately ('q').
+    """
+        
     qa_pairs = pair_questions_answers(CSV_PATH)
     card = generate_bingo_card(CSV_PATH)
 
     mistakes = 0
     errors: List[Tuple[str, str, str]] = []   # (question, true_answer, wrong_answer_text)
     correct_log: List[Tuple[str, str]] = []   # (question, correct_answer) - New list for correct ones
-
+    print("\n"*15)
     print("=== STUDY BINGO ===")
     print("Type a coordinate (e.g. B2).")
     print("If you think the answer is NOT on your board, press ENTER to skip.")
@@ -127,7 +133,6 @@ def main() -> None:
             if mistakes >= MAX_MISTAKES:
                 print("💥 You reached the maximum number of mistakes. You loose.")
                 print("Here is the list of what went wrong:")
-                print_bingo_card(card)
                 print_error_log(errors)
                 return
 
@@ -135,6 +140,25 @@ def main() -> None:
     print("\nNo more questions. Game over.")
     print_bingo_card(card)
     print_error_log(errors)
+
+def main() -> None:
+    while True:
+        # Runs one game. 
+        # result is False ONLY if user typed 'q' to quit the app entirely.
+        # result is True if they Won, Lost, or ran out of cards.
+        result = play_round()
+        
+        # If user explicitly typed 'q', we break the loop and close the app.
+        if result is False:
+            break
+        
+        # Otherwise (Win or Lose), we ask to play again.
+        print("\n" + "-"*40)
+        again = input("🔄 Do you want to play again? (y/n): ").strip().lower()
+        if again != 'y':
+            print("Thanks for playing! See you next time.")
+            break
+        print("\nRestarting game...\n" + "-"*40 + "\n")
 
 
 if __name__ == "__main__":
