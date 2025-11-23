@@ -15,6 +15,5 @@ RUN git clone https://github.com/mireiaacss/study_bingo.git .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-
 # Command to run the game
 CMD ["python", "src/game.py"]
