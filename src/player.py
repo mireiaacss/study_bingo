@@ -52,6 +52,4 @@ def ask_for_coord_or_skip(
         idx = coord_to_indices(raw)
         if idx is not None:
             r, c = idx
-            return "ABCDEFGHI"[c] + str(r + 1)  # normalize like 'A1'
-
-        print(f"⚠️  Invalid coordinate. Use a letter {VALID_COLS[0]}-{VALID_COLS[-1]} and a number {VALID_ROWS[0]}-{VALID_ROWS[-1]} (e.g. {VALID_COLS[0]}{VALID_ROWS[-1]}). Press ENTER to skip.")
+            return "ABCDEFGHI"[c] + str(
