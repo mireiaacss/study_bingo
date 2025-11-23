@@ -1,16 +1,24 @@
-# Base image from docker hub
+# Base image: Python 3.12 slim, as it is a lightweight application
 FROM python:3.12-slim
 
-# Working directory inside the container
+# As we are using slim image, we have to install git using Debian package manager
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /app
 
-# Python dependencies (layer: dependencies)
+# Clone the repository
+RUN git clone https://github.com/mireiaacss/study_bingo.git .
+
+# Install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code and data (layer: application code)
+# To copy the entire src and data directories
 COPY src/ ./src/
 COPY data/ ./data/
 
-# Command to run the game (layer: run app)
-CMD ["python", "-m", "src.game"]
+# Command to run the game
+CMD ["python", "src/game.py"]
