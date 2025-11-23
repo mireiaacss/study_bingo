@@ -24,14 +24,14 @@ Run the game:
 python -m src.game..py
 ```
 
-## Run with Docker Compose
+### Run with Docker Compose
 
 From the project root:
 
 ```bash
 docker compose run --rm app
 
-Project structure
+###Project structure
 
 ```
 study_bingo/
