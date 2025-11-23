@@ -158,4 +158,24 @@ def play_round() -> bool:
     print_error_log(errors)
 
 def main() -> None:
-    wh
+    while True:
+        # Runs one game. 
+        # result is False ONLY if user typed 'q' to quit the app entirely.
+        # result is True if they Won, Lost, or ran out of cards.
+        result = play_round()
+        
+        # If user explicitly typed 'q', we break the loop and close the app.
+        if result is False:
+            break
+        
+        # Otherwise (Win or Lose), we ask to play again.
+        print("\n" + "-"*40)
+        again = input("🔄 Do you want to play again? (y/n): ").strip().lower()
+        if again != 'y':
+            print("Thanks for playing! See you next time.")
+            break
+        print("\nRestarting game...\n" + "-"*40 + "\n")
+
+
+if __name__ == "__main__":
+    main()

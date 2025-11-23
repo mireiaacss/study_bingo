@@ -75,4 +75,10 @@ def mark_cell(card, row, col):
 
 
 def is_complete(card):
-    """Return True if the board is comple
+    """Return True if the board is completely marked."""
+    for row in card:
+        for cell in row:
+            if cell != "X":
+                return False
+    return True
+
