@@ -1,44 +1,49 @@
-from pathlib import Path
+# tests/test_questions.py
+
 import sys
+import os
+import pytest
 
-# Project root = folder that contains "src" and "data"
-ROOT_DIR = Path(__file__).resolve().parents[1]
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+)
 
-# Make sure Python can find src/questions.py
-SRC_DIR = ROOT_DIR / "src"
-sys.path.insert(0, str(SRC_DIR))
-
-from questions import give_answers
-
-# Path to your real CSV
-CSV_PATH = ROOT_DIR / "data" / "q&a.csv"
+import questions  
 
 
-def test_answer_1_matches_csv():
-    answers = give_answers(str(CSV_PATH))
-    # 1st data row in q&a.csv (after header) -> cd ~
-    assert answers[0] == "cd ~"
+def create_sample_csv(tmp_path):
+    csv_path = tmp_path / "sample_git.csv"
+
+    csv_content = (
+        "question;answer\n"
+        "How do you initialize a new Git repository?;git init\n"
+        "How do you check your Git version?;git --version\n"
+        "How do you clone a remote repository?;git clone\n"
+    )
+
+    csv_path.write_text(csv_content, encoding="utf-8")
+    return csv_path
 
 
-def test_answer_2_matches_csv():
-    answers = give_answers(str(CSV_PATH))
-    # 2nd data row -> cd ..
-    assert answers[1] == "cd .."
+def test_give_answers(tmp_path):
+    csv_path = create_sample_csv(tmp_path)
+
+    answers = questions.give_answers(str(csv_path))
+
+    assert answers == [
+        "git init",
+        "git --version",
+        "git clone",
+    ]
 
 
-def test_answer_3_matches_csv():
-    answers = give_answers(str(CSV_PATH))
-    # 3rd data row -> cd -
-    assert answers[2] == "cd -"
+def test_give_questions(tmp_path):
+    csv_path = create_sample_csv(tmp_path)
 
+    qs = questions.give_questions(str(csv_path))
 
-def test_answer_4_matches_csv():
-    answers = give_answers(str(CSV_PATH))
-    # 4th data row -> cd /
-    assert answers[3] == "cd /"
-
-
-def test_answer_5_matches_csv():
-    answers = give_answers(str(CSV_PATH))
-    # 5th data row -> rm
-    assert answers[4] == "rm"
+    assert qs == [
+        "How do you initialize a new Git repository?",
+        "How do you check your Git version?",
+        "How do you clone a remote repository?",
+    ]
