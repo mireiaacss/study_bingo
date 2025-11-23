@@ -32,13 +32,14 @@ From the project root:
 
 ```bash
 docker compose run --rm app
-
 ```
+
 Running the container from Docker Desktop GUI will not work, because the game expects keyboard input.
 Docker Desktop does not provide an interactive terminal for input().
 
-```
-###Project structure
+
+### Project structure
+
 
 ```
 study_bingo/
