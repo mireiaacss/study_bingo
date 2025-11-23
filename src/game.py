@@ -90,16 +90,6 @@ def play_round() -> bool:
     print(f"You loose after {MAX_MISTAKES} mistakes. Type 'q' to quit.\n")
 
     for question, correct_answer in qa_pairs:
-        # Win check at start of round
-        if is_complete(card):
-            if mistakes == 0:
-                print("\n🏆 PERFECT BINGO! You completed the board with no mistakes!")
-            else:
-                print("\n🎉 BINGO! But you did some mistakes...")
-                print_bingo_card(card)
-                print_error_log(errors)
-            return
-
         print_bingo_card(card)
         print("\nQuestion:")
         print(f"\n----→ {question}")
@@ -142,9 +132,12 @@ def play_round() -> bool:
 
         if chosen_cell == correct_answer:
             if is_complete(card):
-                print("\n🎉 BINGO! You completed the board!")
-                print_bingo_card(card)
-                print_error_log(errors)
+                if mistakes == 0:
+                    print("\n🏆 PERFECT BINGO! You completed the board with no mistakes!")
+                else:
+                    print("\n🎉 BINGO! But you did some mistakes...")
+                    print_bingo_card(card)
+                    print_error_log(errors)
                 return
         else:
             mistakes += 1
