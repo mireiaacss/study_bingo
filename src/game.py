@@ -83,7 +83,7 @@ def play_round() -> bool:
     mistakes = 0
     errors: List[Tuple[str, str, str]] = []   # (question, true_answer, wrong_answer_text)
     correct_log: List[Tuple[str, str]] = []   # (question, correct_answer) - New list for correct ones
-    print("\n"*15)
+    print("\n"*2)
     print("=== STUDY BINGO ===")
     print("Type a coordinate (e.g. B2).")
     print("If you think the answer is NOT on your board, press ENTER to skip.")

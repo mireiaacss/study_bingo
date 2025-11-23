@@ -68,31 +68,3 @@ study_bingo/
 Contributing
 
 See docs/index.md for rules and guidance on updating trivia content.
-
-# Study Bingo - Sprint 1
-
-## Sprint Goal
-
-Establish the foundation of the Bingo game by setting up the project structure,
-creating an initial number dataset, and implementing basic bingo card generation.
-
-## Run locally
-
-pip install -r requirements.txt
-python -m src.board
-
-# Study Bingo - Sprint 2
-
-## Sprint Goal
-
-Develop and implement the main features of the Bingo game by drawing
-a random number each round, allowing players to mark their cards and validating
-their responses in each round and detecting “bingo” when winning.
-
-## Run locally
-
-python src/board.py
-
-python src/questions.py
-
-pytest
