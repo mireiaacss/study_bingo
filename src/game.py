@@ -1,6 +1,6 @@
 import random
 from typing import List, Tuple, Optional
-
+import os
 from questions import give_questions, give_answers
 from board import (
     generate_bingo_card,
@@ -9,9 +9,26 @@ from board import (
     is_complete,
 )
 from player import ask_for_coord_or_skip, coord_to_indices
-CSV_PATH = "data/" + input(str("Which subject do you want to study? \n")) + ".csv"
-MAX_MISTAKES = 3            # lose after 3 mistakes
 
+def choose_subject() -> str:
+    data_dir = 'data/'
+    available_subjects = [f for f in os.listdir(data_dir) if os.path.isfile(os.path.join(data_dir, f))]
+    print("Available subjects:")
+    for idx, subject in enumerate(available_subjects, 1):
+        print(f"{idx}. {subject}")
+    while True:
+        try:
+            choice = int(input("\nEnter the number of the subject you want to study: "))
+            if 1 <= choice <= len(available_subjects):
+                selected_path = os.path.join(data_dir, available_subjects[choice - 1])
+                return selected_path
+            else:
+                print("Invalid number. Please try again.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+CSV_PATH = choose_subject()
+MAX_MISTAKES = 3            # lose after 3 mistakes
 
 def pair_questions_answers(csv_path: str) -> List[Tuple[str, str]]:
     """
