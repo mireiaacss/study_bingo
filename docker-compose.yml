@@ -9,5 +9,5 @@ services:
     tty: true          # like -t in docker run (allocates a TTY)
     command: ["python", "src/game.py"]
     volumes:
-      - ./data:/app/data
+      - ./data:/app/data:ro # Mount data directory as read-only
 
