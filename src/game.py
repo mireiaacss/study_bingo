@@ -92,9 +92,12 @@ def play_round() -> bool:
     for question, correct_answer in qa_pairs:
         # Win check at start of round
         if is_complete(card):
-            print("\n🎉 BINGO! You completed the board!")
-            print_bingo_card(card)
-            print_error_log(errors)
+            if mistakes == 0:
+                print("\n🏆 PERFECT BINGO! You completed the board with no mistakes!")
+            else:
+                print("\n🎉 BINGO! But you did some mistakes...")
+                print_bingo_card(card)
+                print_error_log(errors)
             return
 
         print_bingo_card(card)
