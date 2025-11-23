@@ -18,7 +18,7 @@ def choose_subject() -> str:
         print(f"{idx}. {subject}")
     while True:
         try:
-            choice = int(input("\nEnter the number of the subject you want to study: "))
+            choice = int(input("\nEnter the number of the topic you want to study: "))
             if 1 <= choice <= len(available_topics):
                 selected_path = os.path.join(data_dir, available_topics[choice - 1])
                 return selected_path
