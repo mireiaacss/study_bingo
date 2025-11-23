@@ -154,7 +154,7 @@ def main() -> None:
         
         # Otherwise (Win or Lose), we ask to play again.
         print("\n" + "-"*40)
-        again = input("🔄 Do you want to play again? (yes/no): ").strip().lower()
+        again = input("🔄 Do you want to play again? (y/n): ").strip().lower()
         if again != 'y':
             print("Thanks for playing! See you next time.")
             break
