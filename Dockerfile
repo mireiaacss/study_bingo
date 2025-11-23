@@ -13,12 +13,8 @@ WORKDIR /app
 RUN git clone https://github.com/mireiaacss/study_bingo.git .
 
 # Install dependencies
-COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# To copy the entire src and data directories
-COPY src/ ./src/
-COPY data/ ./data/
 
 # Command to run the game
 CMD ["python", "src/game.py"]

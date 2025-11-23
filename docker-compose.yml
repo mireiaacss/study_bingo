@@ -1,12 +1,14 @@
-
 services:
   app:
     build: .
     image: study-bingo:1.0
     container_name: study-bingo-app
-    stdin_open: true   # like -i in docker run (allows input)
-    tty: true          # like -t in docker run (allocates a TTY)
+    stdin_open: true
+    tty: true
     command: ["python", "src/game.py"]
-    volumes:
-      - ./data:/app/data:ro # Mount data directory as read-only
 
+    volumes:
+      - bingo_data:/app/data:ro   # volumen Docker, no depende del host
+
+volumes:
+  bingo_data:
