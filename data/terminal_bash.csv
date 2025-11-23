@@ -36,38 +36,6 @@ How do you find only files?;find -type f
 How you you search recursively in directories?;grep -r
 How do you sort and remove duplicates?;sort | uniq
 How do you extract first column from CSV?;cut -d, -f1
-How do you initialize a new Git repository?;git init
-How do you check your Git version?;git --version
-How do you clone a remote repository?;git clone
-How do you add a specific file to staging?;git add file
-How do you add all changes to staging?;git add .
-How do you commit with a message?;git commit -m message
-How do you see what will be committed?;git status
-How do you commit all tracked files?;git commit -a -m message
-How do you see commit history?;git log
-How do you see compact commit history?;git log --oneline
-How do you see changes in a commit?;git show commit-id
-How do you see last N commits?;git log -n
-How do you list all branches?;git branch
-How do you switch to a branch?;git checkout branch
-How do you merge a branch?;git merge branch
-How do you push to remote?;git push origin main
-How do you pull from remote?;git pull origin main
-How do you see remote branches?;git branch -r
-How do you get changes without merging?;git fetch
-How do you run a container from an image?;docker run
-How do you run a container in background?;docker run -d
-How do you name a container?;docker run --name mycontainer
-How do you list running containers?;docker ps
-How do you  list ALL containers?;docker ps -a
-How do you stop a container?;docker stop
-How do you remove a container?;docker rm
-How do you list images?;docker images
-How do you pull image from registry?;docker pull image
-How do you push image to registry?;docker push image
-How do you see image history?;docker history
-How do you see Docker info?;docker info
-How do you see Docker version?;docker version
 How do you show your current username?;whoami
 How do you show user ID and group IDs?;id
 How do you show all system information?;uname -a
@@ -78,3 +46,5 @@ How do you show all running processes?;ps aux
 How do you show all environment variables?;env
 How do you print a word?;echo
 How do you print all files in current directory? ;echo *
+How do you check disk space usage?;df -h
+How do you clear the terminal screen?;clear

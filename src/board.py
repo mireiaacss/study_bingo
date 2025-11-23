@@ -38,10 +38,8 @@ def print_bingo_card(card, col_width=14, max_lines=2):
     def fmt_cell(text):
         s = str(text).replace("\n", " ")
         lines = wrap(s, width=col_width) or [""]
-        if len(lines) > max_lines:
-            trimmed = lines[:max_lines]
-            trimmed[-1] = trimmed[-1][:col_width - 1] + "…"
-            lines = trimmed
+        # Show all wrapped lines up to max_lines, no ellipsis
+        lines = lines[:max_lines]
         while len(lines) < max_lines:
             lines.append("")
         return [line.center(col_width) for line in lines]
