@@ -26,11 +26,18 @@ python -m src.game..py
 
 ### Run with Docker Compose
 
+This project is an interactive terminal-based game, so it must be executed in a way that allows Docker to attach a keyboard/TTY to the container.
+
 From the project root:
 
 ```bash
 docker compose run --rm app
 
+```
+Running the container from Docker Desktop GUI will not work, because the game expects keyboard input.
+Docker Desktop does not provide an interactive terminal for input().
+
+```
 ###Project structure
 
 ```
