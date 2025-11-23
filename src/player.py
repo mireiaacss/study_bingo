@@ -1,8 +1,10 @@
 from typing import Optional, Tuple
+from board import COLS, ROWS
 
-VALID_COLS = "ABCDEFGHI"  # 9 columns
-VALID_ROWS = "123"        # 3 rows
-
+possible_cols = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+possible_rows = "123456789"
+VALID_COLS = str(possible_cols[0: COLS])  # COLS columns
+VALID_ROWS = str(possible_rows[0: ROWS])        # ROWS rows
 
 def coord_to_indices(coord: str) -> Optional[Tuple[int, int]]:
     """
@@ -52,4 +54,4 @@ def ask_for_coord_or_skip(
             r, c = idx
             return "ABCDEFGHI"[c] + str(r + 1)  # normalize like 'A1'
 
-        print("⚠️  Invalid coordinate. Use a letter A–I and a number 1–3 (e.g. C1). Press ENTER to skip.")
+        print(f"⚠️  Invalid coordinate. Use a letter {VALID_COLS[0]}-{VALID_COLS[-1]} and a number {VALID_ROWS[0]}-{VALID_ROWS[-1]} (e.g. {VALID_COLS[0]}{VALID_ROWS[-1]}). Press ENTER to skip.")

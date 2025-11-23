@@ -1,0 +1,18 @@
+key;value
+How do you go to your home directory?;cd ~
+How do you go up one directory level?;cd ..
+How do you return to the previous directory?;cd -
+How do you go to the root directory?;cd /
+How do you remove a file?;rm
+How do you remove a directory and its contents?;rm -r
+How do you copy a file?;cp
+How do you list directory contents?;ls
+How do you move or rename a file/directory?;mv
+How do you list with detailed information?;ls -l
+How do you list with hidden files?;ls -a
+How do you search for text in files?;grep
+How do you find lines NOT containing a pattern?;grep -v
+How do you find files by name in directory tree?;find
+How do you overwrite output to a file?;>
+How do you append output to a file?;>>
+How do you pipe output to another command?;|

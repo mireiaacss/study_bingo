@@ -9,8 +9,7 @@ from board import (
     is_complete,
 )
 from player import ask_for_coord_or_skip, coord_to_indices
-
-CSV_PATH = "data/q&a.csv"   # adjust if needed
+CSV_PATH = "data/" + input(str("Which subject do you want to study? \n")) + ".csv"
 MAX_MISTAKES = 3            # lose after 3 mistakes
 
 

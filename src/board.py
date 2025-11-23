@@ -2,22 +2,34 @@
 import random
 import questions
 from textwrap import wrap
+import yaml
+
+def load_settings(yaml_path):
+    with open(yaml_path, 'r') as f:
+        settings = yaml.safe_load(f)
+    return settings
+
+# Usage example
+settings = load_settings('src/config/settings.yaml')
+ROWS = settings['ROWS']  # load the rows
+COLS = settings['COLS']  # load the columns
+
 def generate_bingo_card(csv_path):
-    """Generate a 3x9 bingo card filled with random answers from the CSV."""
+    """Generate a ROWSxCOLS bingo card filled with random answers from the CSV."""
     answers = questions.give_answers(csv_path)
-    chosen = random.sample(answers, 27)  # 3 x 9 = 27 answers
-    card = [chosen[i*9:(i+1)*9] for i in range(3)]
+    chosen = random.sample(answers, ROWS * COLS)  # total answers
+    card = [chosen[i*COLS:(i+1)*COLS] for i in range(ROWS)]
     return card
 
 
 def print_bingo_card(card, col_width=14, max_lines=2):
     """
-    Pretty-print a 3x9 bingo board.
+    Pretty-print a ROWSxCOLS bingo board.
     - col_width: characters per column (fixed)
     - max_lines: number of wrapped lines per cell
     """
     n_rows, n_cols = len(card), len(card[0])
-    assert n_cols == 9, "Expected 9 columns (A..I)."
+    assert n_cols == COLS, "Expected COLS columns (A..I)."
 
     # Column labels A..I
     column_labels = [chr(ord('A') + i) for i in range(n_cols)]
@@ -72,7 +84,3 @@ def is_complete(card):
                 return False
     return True
 
-if __name__ == "__main__":
-    path = "data/q&a.csv"
-    card = generate_bingo_card(path)
-    print_bingo_card(card)
