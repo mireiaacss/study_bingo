@@ -12,15 +12,15 @@ from player import ask_for_coord_or_skip, coord_to_indices
 
 def choose_subject() -> str:
     data_dir = 'data/'
-    available_subjects = [f for f in os.listdir(data_dir) if os.path.isfile(os.path.join(data_dir, f))]
-    print("Available subjects:")
-    for idx, subject in enumerate(available_subjects, 1):
+    available_topics = [f for f in os.listdir(data_dir) if os.path.isfile(os.path.join(data_dir, f))]
+    print("Available topics:")
+    for idx, subject in enumerate(available_topics, 1):
         print(f"{idx}. {subject}")
     while True:
         try:
             choice = int(input("\nEnter the number of the subject you want to study: "))
-            if 1 <= choice <= len(available_subjects):
-                selected_path = os.path.join(data_dir, available_subjects[choice - 1])
+            if 1 <= choice <= len(available_topics):
+                selected_path = os.path.join(data_dir, available_topics[choice - 1])
                 return selected_path
             else:
                 print("Invalid number. Please try again.")
