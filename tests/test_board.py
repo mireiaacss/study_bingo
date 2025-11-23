@@ -1,41 +1,93 @@
+# tests/test_board.py
+
+import sys
+import os
+import csv
 import pytest
-import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
-import board
+import yaml
 
-def test_create_number_dataset_default():
-    data = board.create_number_dataset()
-    assert data[0] == 1
-    assert data[-1] == 99
-    assert len(data) == 99
+# Add src/ to the import path
+sys.path.append(
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src"))
+)
 
-
-def test_create_number_dataset_custom_range():
-    data = board.create_number_dataset(10, 15)
-    assert data == [10, 11, 12, 13, 14, 15]
+import board  
 
 
-def test_generate_bingo_card_shape():
-    card = board.generate_bingo_card()
-    assert len(card) == 3
-    for row in card:
-        assert len(row) == 9
+def test_load_settings(tmp_path):
+    data = {"ROWS": 3, "COLS": 4}
+    yaml_path = tmp_path / "settings.yaml"
+    yaml_path.write_text(yaml.safe_dump(data), encoding="utf-8")
+
+    settings = board.load_settings(str(yaml_path))
+
+    assert settings["ROWS"] == 3
+    assert settings["COLS"] == 4
 
 
-def test_generate_bingo_card_unique_numbers():
-    card = board.generate_bingo_card()
-    numbers = [n for row in card for n in row]
-    assert len(numbers) == len(set(numbers)), "Numbers should be unique"
+def test_generate_bingo_card():
+    total_cells = board.ROWS * board.COLS
+
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    csv_path = os.path.join(base_dir, "data", "git_docker.csv")
+
+    assert os.path.exists(csv_path)
+
+    board.random.seed(0)
+    card = board.generate_bingo_card(csv_path)
+
+    assert len(card) == board.ROWS
+    assert all(len(row) == board.COLS for row in card)
+
+    flat = [cell for row in card for cell in row]
+
+    assert len(flat) == total_cells
+    assert len(flat) == len(set(flat))
+
+    answers = board.questions.give_answers(csv_path)
+    assert set(flat).issubset(set(answers))
 
 
-def test_print_bingo_card_output(capsys):
+def test_print_bingo_card(capsys):
     card = [
-        [1, 2, 3, 4, 5, 6, 7, 8, 9],
-        [10, 11, 12, 13, 14, 15, 16, 17, 18],
-        [19, 20, 21, 22, 23, 24, 25, 26, 27]
+        [f"R1C{c+1}" for c in range(board.COLS)],
+        [f"R2C{c+1}" for c in range(board.COLS)],
     ]
-    board.print_bingo_card(card)
-    captured = capsys.readouterr()
-    assert "A  B  C" in captured.out
-    assert "1 |" in captured.out
-    assert "3 |" in captured.out
+
+    board.print_bingo_card(card, col_width=8, max_lines=1)
+    out = capsys.readouterr().out
+
+    for i in range(board.COLS):
+        assert chr(ord("A") + i) in out
+
+    assert "1|" in out
+    assert "2|" in out
+
+    assert "R1C1" in out or "R1C2" in out or "R1C3" in out
+
+
+def test_mark_cell():
+    card = [
+        ["a", "b"],
+        ["c", "d"],
+    ]
+
+    board.mark_cell(card, 0, 1)
+
+    assert card[0][1] == "X"
+    assert card[0][0] == "a"
+    assert card[1][0] == "c"
+    assert card[1][1] == "d"
+
+
+def test_is_complete():
+    card = [
+        ["X", "X"],
+        ["X", "Y"],
+    ]
+
+    assert not board.is_complete(card)
+
+    card[1][1] = "X"
+    assert board.is_complete(card)
+
