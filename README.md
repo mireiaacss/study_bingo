@@ -23,7 +23,7 @@ The game requires only:
 This project is an interactive terminal-based game, so it must be executed in a way that allows Docker to attach a keyboard/TTY to the container.
 
 1. Download the "Docker" folder of the repository.
-2. Ensure both Dockerfile and docker-compose.yml are in the same folder.
+2. Ensure both Dockerfile and docker-compose.yml are in the same folder and your current path is this same folder.
 3. You can verify that Docker and Docker Compose are available:
   ```bash
 docker --version
@@ -36,6 +36,8 @@ Execute the game using:
   ```bash
 docker compose run --rm app
 ```
+**Ensuring first you are currently in the docker folder in your terminal**
+
 This command will build the image automatically if it does not exists so only 1 command is needed and not two.
 Then, it allocates an interactive terminal required for user input and runs the application.
 Once ended, it removes the container upon exist to avoid accumulation of unused containers.
